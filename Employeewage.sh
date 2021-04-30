@@ -2,7 +2,7 @@
 IS_PRESENT_FULL=1
 IS_PRESENT_HALF=2
 EMP_RATE_PER_HR=20
-NO_OF_WORKING_DAYS=5
+NO_OF_WORKING_DAYS=20
 MAX_WORK_HRS=20
 totalworkinghrs=0
 totalworkingdays=0
@@ -23,6 +23,8 @@ do
         empHrs="$( getworkHours $empCheck)"
         totalworkinghrs=$(( totalworkinghrs + empHrs ))
         #salary=$(( $EMP_RATE_PER_HR * $empHrs ))
+        dailywage[$totalworkingdays]=$(( $empHrs * $EMP_RATE_PER_HR ))
 done
 salary=$(( $totalworkinghrs * $EMP_RATE_PER_HR))
+echo ${dailywage[@]}
 
